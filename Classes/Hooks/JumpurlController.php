@@ -82,6 +82,7 @@ class JumpurlController
                         $responseType = 2;
                         $jumpurl = $mailContent['plain']['link_ids'][abs($urlId)];
                     }
+                    $encodedJumpurl = $jumpurl;
                     $jumpurl = htmlspecialchars_decode(urldecode($jumpurl));
 
                     switch ($recipientTable) {
@@ -133,6 +134,7 @@ class JumpurlController
                             }
                         }
                     }
+                    $jumpurl = $encodedJumpurl;
                 }
                 if (!$jumpurl) {
                     die('Error: No further link. Please report error to the mail sender.');
